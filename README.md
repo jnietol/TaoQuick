@@ -40,7 +40,7 @@
 
 This is a QtQuick/Qml Component library, integrated some commonly used QtQuick components, and 
 
-make the appropriate function expansion to  facilitate development of Qml applications.
+makes the appropriate function expansion to facilitate development of Qml applications.
 
 # Badge preview
 
@@ -197,19 +197,19 @@ https://marketplace.qt.io/collections/newest/products/taoquick
 
 # Project Struct
 
-Project Struct as flow:
+Project Struct as follows:
 
 ![](doc/struct1.png)
 
-echo content as table：
+Echo contents as the table below：
 
 |Content|Reference|Remark|
 |----|----|----|
-|src|TaoQuick Core Library|some qml code, picture and scripts for support designer, not has c++ code|
-|exampes|some demo|show how to use TaoQuick Core Library|
-|3rdparty|thrid party library||
-|mkspecs|qmake extern||
-|.github|github-actions|CI CD|
+|src|TaoQuick Core Library|Some qml codes, pictures and scripts for support designer, not including c++ code|
+|examples|Some demos|Show how to use TaoQuick Core Library|
+|3rdparty|A third party library||
+|mkspecs|Qmake externs||
+|.github|Github-actions|CI CD|
 
 # TaoQuick Core Library
 
@@ -221,29 +221,29 @@ Content:
 
 ![](doc/core.png)
 
-To avoid confusion with Qt default components, TaoQuick components names all begin with Cus (The abbreviation of Custom)
+To avoid confusion with Qt default components, TaoQuick components' names all begin with Cus (The abbreviation of Custom)
 
-CusConfig is global configuration, mainly contain font、 theme and so on, all components are displayed in this configuration
+CusConfig is the global configuration, which mainly contains font, theme and so on, and all components are displayed in this configuration.
 
-Other Contents reference to above table：
+Other Contents reference to the table below：
 
 |Content|Reference|Remark|
 |----|----|----|
-|Basic|Basic Controls| such as Text, ToolTip, It is used to unify the basic components in the whole project and facilitate the global replacement when the project becomes huge|
-|CusBackground|A simple background box|it is usually placed at the beginning of the program to absorb mouse focus from the white space|
+|Basic|Basic Controls| Such as Text, ToolTip, they are used to unify basic components in the whole project and facilitate the global replacement when the project becomes huge|
+|CusBackground|A simple background box|it is usually placed at the beginning of the program to absorb the mouse focus from the white space|
 |CusButton|button|Some commonly used buttons have been encapsulated, and various effects can be customized again|
 |CusCheckBox|CheckBox||
 |CusComboBox|ComboBox||
 |CusImage|Basic Image||
 |CusInput|Input||
 |CusLabel|Label||
-|CusListView|List|Simaple custom scrollbars|
+|CusListView|List|Simple custom scrollbars|
 |CusPopup|Popup||
 |CusScroll|ScrollBar||
 |CusSlider|Slider||
 |CusSpinBox|SpinBox||
-|CusTable|Table|It needs to be used with specific C++ model to support the selection, check, draw rect selection, anti-selection, continuous selection and all selection|
-|Effect|Effect|Animation、PageSwitch and ShaderToy|
+|CusTable|Table|It needs to be used with a specific C++ model to support functions like selection, check, draw rect selection, anti-selection, continuous selection and all selection|
+|Effect|Effect|Animation, PageSwitch and ShaderToy|
 |Misc|Others||
 
 # Use TaoQuick 
@@ -256,50 +256,50 @@ cd TaoQuick
 
 ## qmake 
 
-You just need import '.pri' file to project and add import Path to QmlEngine, TaoQuick will be use as local file or qrc resource.
+You just need import '.pri' file to your project and add import Path to QmlEngine, TaoQuick will be used as local files or qrc resources.
 
-Compared with 'Qml module' and 'Qml C++ plugin', this usage has the following advantages:
+Compared with 'Qml module' and 'Qml C++ plugin', this usage has advantages below:
 
-* After importing '.pri', no additional compile, generation of dll or plugin are required
+* After you import '.pri', no additional compilation, generation of dlls or plugins would be required
 
-* No additional copy resources are required to deployment the program
+* No additional copy resource is required to deploy the program
 
-* After importing '.pri', Qt Creater can support TaoQuick Qml code highlighting and double-clicking the Follow symbol
+* After you import '.pri', Qt Creator can support TaoQuick Qml code highlighting and double-clicking the following symbol
 
-* After import the module 'import TaoQuick 1.0' in Qml, you can use the TaoQuick component in The Designer mode of Qt Creater by dragging or visual property editor.(principle: Generate metainfo required by Designer via some script) 
+* After importing the module 'import TaoQuick 1.0' in Qml, you can use the TaoQuick component on Designer mode of Qt Creator by dragging or in visual property editor (Principle: Generating metainfos is required by Designer via some scripts) 
 
 ![](preview/designer.png)
 
-detail use step：
+Detailed steps：
 
-1. copy 'TaoQuick' directory and 'TaoQuick.pri' file from TaoQuick/src to your project
+1. Copy 'TaoQuick' directory and 'TaoQuick.pri' file from TaoQuick/src to your project
 
 2. Import 'TaoQuick.pri' files in your project 'pro' file
 
-for eaxmple: 
+For example: 
 
 ```qmake
 include(TaoQuick.pri)
 ```
 
 
-TaoQuick.pri will define a MACRO: TaoQuickImportPath.
+TaoQuick.pri defines a MACRO: TaoQuickImportPath.
 
-Debug mode will use TaoQuick as local file, and release mode for qrc resource.
+On Debug mode you use TaoQuick as local files, and Release mode is for qrc resource.
 
 
-3. add import path in cpp
+3. Add import path in cpp
 
-  Before load source qml, TaoQuick need add import path to QmlEngine and set imagePath to context.
+  Before you load source qmls, TaoQuick need add import path to QmlEngine and set imagePath to context.
 
-  if use QQuickView, TaoQuick can be use as flow:
+  If you use QQuickView, TaoQuick can be used as follows:
    
 ```C++
     view.engine()->addImportPath(TaoQuickImportPath);
     view.rootContext()->setContextProperty("taoQuickImportPath", TaoQuickImportPath);
 ```
 
-   if use QmlEngine, TaoQuick can be use as flow:
+   if you use QmlEngine, TaoQuick can be use as follows:
 
 ```C++
     engine.addImportPath(TaoQuickImportPath);
@@ -309,13 +309,13 @@ Debug mode will use TaoQuick as local file, and release mode for qrc resource.
 ***
 ## cmake
 
-TaoQuick start support cmake after version 0.5.0 , it's same as qmake.
+TaoQuick starts support cmake after version 0.5.0 , which is the same as qmake.
 
-detail use step：
+Detailed steps：
 
-1. copy 'TaoQuick' directory and 'taoQuick.cmake' file from TaoQuick/src to your project
+1. Copy 'TaoQuick' directory and 'taoQuick.cmake' file from TaoQuick/src to your project
 
-2. Import 'taoQuick.cmake' files in your project 'CMakeLists.txt' file
+2. Import 'taoQuick.cmake' files in your project's 'CMakeLists.txt' file
 
 ```cmake
 include(taoQuick.cmake)
@@ -323,9 +323,9 @@ include(taoQuick.cmake)
 
 taoQuick.cmake will define a MACRO: TaoQuickImportPath.
 
-Debug mode will use TaoQuick as local file, and release mode for qrc resource.
+On Debug mode you use TaoQuick as local files, and Release mode is for the qrc resource.
 
-Release mode taoQuick.cmake also define a MACRO TaoQuickRes, that location to qrc file.
+On Release mode taoQuick.cmake also defines a MACRO: TaoQuickRes, which locates qrc file.
 
 your project should add TaoQuickRes to executable, like this:
 
@@ -336,18 +336,18 @@ else()
     add_executable(MyApp ${someSource})
 endif()
 ```
-4. add import path in cpp
+3. Add an import path in cpp
 
-  Before load source qml, TaoQuick need add import path to QmlEngine and set imagePath to context.
+  Before loading source qmls, you need add an import path to QmlEngine and set imagePath to contexts.
 
-  if use QQuickView, TaoQuick can be use as flow:
+  if you use QQuickView, TaoQuick can be used as follows:
    
 ```C++
     view.engine()->addImportPath(TaoQuickImportPath);
     view.rootContext()->setContextProperty("taoQuickImportPath", TaoQuickImportPath);
 ```
 
-   if use QmlEngine, TaoQuick can be use as flow:
+   if you use QmlEngine, TaoQuick can be used as follows:
 
 ```C++
     engine.addImportPath(TaoQuickImportPath);
@@ -356,8 +356,8 @@ endif()
 
 # Sponsorship
 
-If you feel the share content is good, treat the author a drink.
+If you feel this shared content is good, treat the author a drink.
 
 <img src="https://github.com/jaredtao/jaredtao.github.io/blob/master/img/weixin.jpg?raw=true" width="30%" height="30%" /><img src="https://github.com/jaredtao/jaredtao.github.io/blob/master/img/zhifubao.jpg?raw=true" width="30%" height="30%" />
 
-it's WeChat Pay and Alipay
+You could pay by WeChat Pay or Alipay.
